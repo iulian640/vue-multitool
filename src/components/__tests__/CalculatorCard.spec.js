@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { mount } from '@vue/test-utils';
+import { createWrapperError, mount } from '@vue/test-utils';
 import CalculatorCard from '../CalculatorCard.vue';
 
 describe('CalculatorCard', () => {
@@ -79,6 +79,7 @@ describe('CalculatorCard', () => {
 
         expect(wrapper.find('.calc__display').text()).toContain('6');
     })
+
     it('6 ÷ 2 debe dar 3', async () => {
         const wrapper = mount(CalculatorCard);
 
@@ -95,5 +96,32 @@ describe('CalculatorCard', () => {
         expect(wrapper.find('.calc__display').text()).toContain('3');
     })
 
+    it('Si pulsas "6" "," y "2" debe dar 6,2', async () => {
+        const wrapper = mount(CalculatorCard);
 
+        const boton6 = wrapper.findAll('button').find(n => n.text() === "6");
+        const botonComa = wrapper.findAll('button').find(n => n.text() === ",");
+        const boton2 = wrapper.findAll('button').find(n => n.text() === "2");
+
+        await boton6.trigger('click');
+        await botonComa.trigger('click');
+        await boton2.trigger('click');
+
+        expect(wrapper.find('.calc__display').text()).toContain('6,2')
+    })
+
+    it('No permite poner mas de una coma en un numero', async () => {
+        const wrapper = mount(CalculatorCard);
+
+        const boton6 = wrapper.findAll('button').find(n => n.text() === "6");
+        const botonComa = wrapper.findAll('button').find(n => n.text() === ",");
+        const boton1 = wrapper.findAll('button').find(n => n.text() === "1");
+
+        await boton6.trigger('click');
+        await botonComa.trigger('click');
+        await botonComa.trigger('click');
+        await boton1.trigger('click');
+
+        expect(wrapper.find('.calc__display').text()).toContain('6,1')
+    })
 })

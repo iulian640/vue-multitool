@@ -1,11 +1,13 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 const display = ref("0");
 const previousValue = ref(null);
 const operator = ref(null);
 const digits = ["7", "8", "9", "4", "5", "6", "1", "2", "3", "0"];
 const ops = ["+", "-", "x", "÷"];
+const decimal = ".";
+const displayText = computed(() => display.value.replace(".", ","));
 
 function pressDigit(digit) {
   if (display.value === "0") {
@@ -13,6 +15,12 @@ function pressDigit(digit) {
   } else {
     display.value += digit;
   }
+}
+
+function pressComa() {
+  if(!display.value.includes(decimal)) {
+    display.value += decimal; }
+
 }
 
 function pressOperator(op) {
@@ -23,30 +31,27 @@ function pressOperator(op) {
 
 function pressEquals() {
   if (operator.value === "+") {
-    display.value = Number(previousValue.value) + Number(display.value);
+    display.value = String(Number(previousValue.value) + Number(display.value));
+  } else if (operator.value === "-") {
+    display.value = String(Number(previousValue.value) - Number(display.value));
+  } else if (operator.value === "x") {
+    display.value = String(Number(previousValue.value) * Number(display.value));
+  } else if (operator.value === "÷") {
+    display.value = String(Number(previousValue.value) / Number(display.value));
   }
-  else if (operator.value === "-") {
-    display.value = Number(previousValue.value) - Number(display.value);
-  }
-  else if (operator.value === "x") {
-    display.value = Number(previousValue.value) * Number(display.value);
-  }
-  else if (operator.value ==="÷") {
-    display.value = Number(previousValue.value) / Number(display.value);
-  }
-  
 }
 </script>
 
 <template>
   <section class="card">
     <h2 class="card__title">Calculadora</h2>
-    <div class="calc__display">{{ display }}</div>
+    <div class="calc__display">{{ displayText }}</div>
     <p>debug: {{ previousValue }} {{ operator }}</p>
     <button v-for="d in digits" :key="d" @click="pressDigit(d)">{{ d }}</button>
     <button v-for="op in ops" :key="op" @click="pressOperator(op)">
       {{ op }}
     </button>
     <button @click="pressEquals()">=</button>
+    <button @click="pressComa()">,</button>
   </section>
 </template>
