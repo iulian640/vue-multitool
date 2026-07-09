@@ -124,4 +124,33 @@ describe('CalculatorCard', () => {
 
         expect(wrapper.find('.calc__display').text()).toContain('6,1')
     })
+
+    it('CE borra el numero actual', async () => {
+        const wrapper = mount(CalculatorCard);
+
+        const boton6 = wrapper.findAll('button').find(n => n.text() === "6")
+        const botonCE = wrapper.findAll('button').find(n => n.text() === "CE")
+
+        await boton6.trigger('click');
+        await botonCE.trigger('click');
+
+        expect(wrapper.find('.calc__display').text()).toContain('0')
+    })
+
+    it('C borra toda la operación', async () => {
+        const wrapper = mount(CalculatorCard);
+
+        const boton6 = wrapper.findAll('button').find(n => n.text() ==="6");
+        const botonMas = wrapper.findAll('button').find(n => n.text() === "+");
+        const boton2 = wrapper.findAll('button').find(n => n.text () === "2");
+        const botonC = wrapper.findAll('button').find(n => n.text () === "C")
+
+        await boton6.trigger('click');
+        await botonMas.trigger('click');
+        await boton2.trigger('click');
+        await botonC.trigger('click');
+
+        expect(wrapper.find('.calc__expression').text()).toBe('');
+        
+    })
 })

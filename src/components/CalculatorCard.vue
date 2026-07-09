@@ -17,6 +17,15 @@ function pressDigit(digit) {
   }
 }
 
+function pressCE(){
+  display.value = '0';
+}
+
+function pressC(){
+  display.value = '0';
+  operator.value = "";
+  previousValue.value = ""
+}
 function pressComa() {
   if(!display.value.includes(decimal)) {
     display.value += decimal; }
@@ -46,12 +55,14 @@ function pressEquals() {
   <section class="card">
     <h2 class="card__title">Calculadora</h2>
     <div class="calc__display">{{ displayText }}</div>
-    <p>debug: {{ previousValue }} {{ operator }}</p>
+    <p class="calc__expression"> {{ previousValue }} {{ operator }}</p>
     <button v-for="d in digits" :key="d" @click="pressDigit(d)">{{ d }}</button>
     <button v-for="op in ops" :key="op" @click="pressOperator(op)">
       {{ op }}
     </button>
     <button @click="pressEquals()">=</button>
     <button @click="pressComa()">,</button>
+    <button @click="pressCE()">CE</button>
+    <button @click="pressC()">C</button>
   </section>
 </template>
