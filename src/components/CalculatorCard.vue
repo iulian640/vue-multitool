@@ -20,6 +20,12 @@ function pressOperator(op) {
   operator.value = op;
   display.value = "0";
 }
+
+function pressEquals() {
+  if (operator.value === "+") {
+    display.value = Number(previousValue.value) + Number(display.value);
+  }
+}
 </script>
 
 <template>
@@ -31,5 +37,6 @@ function pressOperator(op) {
     <button v-for="op in ops" :key="op" @click="pressOperator(op)">
       {{ op }}
     </button>
+    <button @click="pressEquals()">=</button>
   </section>
 </template>
