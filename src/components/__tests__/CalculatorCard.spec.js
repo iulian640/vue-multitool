@@ -140,10 +140,10 @@ describe('CalculatorCard', () => {
     it('C borra toda la operación', async () => {
         const wrapper = mount(CalculatorCard);
 
-        const boton6 = wrapper.findAll('button').find(n => n.text() ==="6");
+        const boton6 = wrapper.findAll('button').find(n => n.text() === "6");
         const botonMas = wrapper.findAll('button').find(n => n.text() === "+");
-        const boton2 = wrapper.findAll('button').find(n => n.text () === "2");
-        const botonC = wrapper.findAll('button').find(n => n.text () === "C")
+        const boton2 = wrapper.findAll('button').find(n => n.text() === "2");
+        const botonC = wrapper.findAll('button').find(n => n.text() === "C")
 
         await boton6.trigger('click');
         await botonMas.trigger('click');
@@ -153,14 +153,14 @@ describe('CalculatorCard', () => {
         expect(wrapper.find('.calc__expression').text()).toBe('');
     })
 
-    it('5, +, 3, +, 3, = deben dar 11 con total acumulado', async() => {
-        const wrapper = mount(CalculatorCard)
+    it('5, +, 3, +, 3, = deben dar 11 con total acumulado', async () => {
+        const wrapper = mount(CalculatorCard);
 
         const boton5 = wrapper.findAll('button').find(n => n.text() === "5");
         const botonMas = wrapper.findAll('button').find(n => n.text() === "+");
         const boton3 = wrapper.findAll('button').find(n => n.text() === "3");
         const botonEqual = wrapper.findAll('button').find(n => n.text() === "=")
-        
+
         await boton5.trigger('click');
         await botonMas.trigger('click');
         await boton3.trigger('click');
@@ -169,5 +169,22 @@ describe('CalculatorCard', () => {
         await botonEqual.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toContain('11')
-})
+    })
+
+    it('5, ÷, 0 da "Sin definir"', async () => {
+        const wrapper = mount(CalculatorCard);
+
+        const boton5 = wrapper.findAll('button').find(n => n.text() === "5");
+        const botonDiv = wrapper.findAll('button').find(n => n.text() === "÷");
+        const boton0 = wrapper.findAll('button').find(n => n.text() === "0");
+
+
+    })
+
+
+
+
+
+
+
 })
