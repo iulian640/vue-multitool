@@ -25,6 +25,16 @@ function pressEquals() {
   if (operator.value === "+") {
     display.value = Number(previousValue.value) + Number(display.value);
   }
+  else if (operator.value === "-") {
+    display.value = Number(previousValue.value) - Number(display.value);
+  }
+  else if (operator.value === "x") {
+    display.value = Number(previousValue.value) * Number(display.value);
+  }
+  else if (operator.value ==="÷") {
+    display.value = Number(previousValue.value) / Number(display.value);
+  }
+  
 }
 </script>
 
