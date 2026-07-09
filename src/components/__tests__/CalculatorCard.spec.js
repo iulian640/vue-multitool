@@ -151,6 +151,23 @@ describe('CalculatorCard', () => {
         await botonC.trigger('click');
 
         expect(wrapper.find('.calc__expression').text()).toBe('');
-        
     })
+
+    it('5, +, 3, +, 3, = deben dar 11 con total acumulado', async() => {
+        const wrapper = mount(CalculatorCard)
+
+        const boton5 = wrapper.findAll('button').find(n => n.text() === "5");
+        const botonMas = wrapper.findAll('button').find(n => n.text() === "+");
+        const boton3 = wrapper.findAll('button').find(n => n.text() === "3");
+        const botonEqual = wrapper.findAll('button').find(n => n.text() === "=")
+        
+        await boton5.trigger('click');
+        await botonMas.trigger('click');
+        await boton3.trigger('click');
+        await botonMas.trigger('click');
+        await boton3.trigger('click')
+        await botonEqual.trigger('click');
+
+        expect(wrapper.find('.calc__display').text()).toContain('11')
+})
 })
