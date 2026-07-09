@@ -6,7 +6,7 @@ describe('CalculatorCard', () => {
     it('Al montar el display muestra 0', () => {
         const wrapper = mount(CalculatorCard)
         
-        expect(wrapper.text()).toContain('0')
+        expect(wrapper.find('.calc__display').text()).toContain('0')
     })
 
     it('Pulsar 5 muestra 5', async () => {
@@ -16,7 +16,7 @@ describe('CalculatorCard', () => {
         
         await boton5.trigger('click');
         
-        expect(wrapper.text()).toContain('5');
+        expect(wrapper.find('.calc__display').text()).toContain('5');
     })
 
     it('Pulsar 1 y 2 deja 12', async () => {
@@ -28,7 +28,7 @@ describe('CalculatorCard', () => {
         await boton1.trigger('click');
         await boton2.trigger('click');
 
-        expect(wrapper.text()).toContain('12');
+        expect(wrapper.find('.calc__display').text()).toContain('12');
     })
 
     it('5 + 3 dabe dar 8', async () => {
@@ -44,8 +44,24 @@ describe('CalculatorCard', () => {
         await boton3.trigger('click');
         await botonEqual.trigger('click');
 
-        expect(wrapper.text()).toContain('8')
+        expect(wrapper.find('.calc__display').text()).toContain('8')
     })
 
+    it('5 - 3 debe dar 2', async () => {
+        const wrapper= mount(CalculatorCard);
+
+        const boton5 = wrapper.findAll('button').find(n => n.text() === "5");
+        const botonMenos = wrapper.findAll('button').find(n => n.text() ==="-");
+        const boton3 = wrapper.findAll('button').find(n => n.text() === "3");
+        const botonEqual = wrapper.findAll('button').find(n => n.text() ==="=");
+
+        await boton5.trigger('click');
+        await botonMenos.trigger('click');
+        await boton3.trigger('click');
+        await botonEqual.trigger('click');
+
+        expect(wrapper.find('.calc__display').text()).toContain('2')
+
+    })
 
 })
