@@ -4,6 +4,7 @@ import { ref, computed } from "vue";
 const display = ref("0");
 const previousValue = ref(null);
 const operator = ref(null);
+const hasError = ref(false);
 const digits = ["7", "8", "9", "4", "5", "6", "1", "2", "3", "0"];
 const ops = ["+", "-", "x", "÷"];
 const decimal = ".";
@@ -42,14 +43,24 @@ function pressOperator(op) {
 }
 
 function pressEquals() {
+  if (hasError.value) return;
+
+  const a = Number(previousValue.value);
+  const b = Number(display.value);
+
   if (operator.value === "+") {
-    display.value = String(Number(previousValue.value) + Number(display.value));
+  display.value = String(a + b);
   } else if (operator.value === "-") {
-    display.value = String(Number(previousValue.value) - Number(display.value));
+    display.value = String(a - b);
   } else if (operator.value === "x") {
-    display.value = String(Number(previousValue.value) * Number(display.value));
+    display.value = String(a * b);
   } else if (operator.value === "÷") {
-    display.value = String(Number(previousValue.value) / Number(display.value));
+    if (display.value === "0") {
+      display.value = "Sin definir";
+      hasError.value = true;
+    } else {
+      display.value = String(a / b,);
+    }
   }
 }
 </script>

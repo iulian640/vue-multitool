@@ -177,7 +177,47 @@ describe('CalculatorCard', () => {
         const boton5 = wrapper.findAll('button').find(n => n.text() === "5");
         const botonDiv = wrapper.findAll('button').find(n => n.text() === "÷");
         const boton0 = wrapper.findAll('button').find(n => n.text() === "0");
+        const botonEqual = wrapper.findAll('button').find(n => n.text() === "=");
 
+        await boton5.trigger('click');
+        await botonDiv.trigger('click');
+        await boton0.trigger('click');
+        await botonEqual.trigger('click');
+
+        expect(wrapper.find('.calc__display').text()).toContain('Sin definir')
+
+    })
+
+    it('0, ÷, 0 da "Sin definir"', async () => {
+        const wrapper = mount(CalculatorCard);
+
+        const botonDiv = wrapper.findAll('button').find(n => n.text() === "÷");
+        const boton0 = wrapper.findAll('button').find(n => n.text() === "0");
+        const botonEqual = wrapper.findAll('button').find(n => n.text() === "=");
+
+        await boton0.trigger('click');
+        await botonDiv.trigger('click');
+        await boton0.trigger('click');
+        await botonEqual.trigger('click');
+
+        expect(wrapper.find('.calc__display').text()).toContain('Sin definir')
+
+    })
+
+    it('0, ÷, 0 , =, = da "Sin definir"', async () => {
+        const wrapper = mount(CalculatorCard);
+
+        const botonDiv = wrapper.findAll('button').find(n => n.text() === "÷");
+        const boton0 = wrapper.findAll('button').find(n => n.text() === "0");
+        const botonEqual = wrapper.findAll('button').find(n => n.text() === "=");
+
+        await boton0.trigger('click');
+        await botonDiv.trigger('click');
+        await boton0.trigger('click');
+        await botonEqual.trigger('click');
+        await botonEqual.trigger('click');
+
+        expect(wrapper.find('.calc__display').text()).toContain('Sin definir')
 
     })
 
