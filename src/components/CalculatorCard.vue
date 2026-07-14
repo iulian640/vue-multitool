@@ -5,6 +5,7 @@ const display = ref("0");
 const previousValue = ref(null);
 const operator = ref(null);
 const hasError = ref(false);
+const MAX_DIGITS = 10
 const digits = ["7", "8", "9", "4", "5", "6", "1", "2", "3", "0"];
 const ops = ["+", "-", "x", "÷"];
 const decimal = ".";
@@ -12,6 +13,7 @@ const displayText = computed(() => display.value.replace(".", ","));
 
 function pressDigit(digit) {
   if (hasError.value) return;
+  if (display.value.length >= MAX_DIGITS) return;
   else if (display.value === "0") {
     display.value = digit;
   } else {

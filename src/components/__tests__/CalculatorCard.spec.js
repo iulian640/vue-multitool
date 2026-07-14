@@ -329,4 +329,35 @@ describe('CalculatorCard', () => {
 
         expect(wrapper.find('.calc__display').text()).toBe('0')
     })
+
+    it('Muestra 10 dígitos como máximo', async () =>
+    {
+        const wrapper = mount(CalculatorCard);
+
+        const boton1 = wrapper.findAll('button').find(n => n.text () === "1");
+        const boton2 = wrapper.findAll('button').find(n => n.text() === "2");
+        const boton3 = wrapper.findAll('button').find(n => n.text () === "3");
+        const boton4 = wrapper.findAll('button').find(n => n.text() === "4");
+        const boton5 = wrapper.findAll('button').find(n => n.text () === "5");
+        const boton6 = wrapper.findAll('button').find(n => n.text() === "6");
+        const boton7 = wrapper.findAll('button').find(n => n.text () === "7");
+        const boton8 = wrapper.findAll('button').find(n => n.text() === "8");
+        const boton9 = wrapper.findAll('button').find(n => n.text () === "9");
+        const boton0 = wrapper.findAll('button').find(n => n.text() === "0");
+        
+
+        await boton1.trigger('click');
+        await boton2.trigger('click');
+        await boton3.trigger('click');
+        await boton4.trigger('click');
+        await boton5.trigger('click');
+        await boton6.trigger('click');
+        await boton7.trigger('click');
+        await boton8.trigger('click');
+        await boton9.trigger('click');
+        await boton0.trigger('click');
+        await boton0.trigger('click');
+
+        expect(wrapper.find('.calc__display').text()).toBe('1234567890')
+    })
 })
