@@ -48,6 +48,8 @@ function pressOperator(op) {
 
   if (hasError.value) return;
 
+  if (display.value === "-") return;
+  
   else if(op === "-" && display.value === "0"){
     display.value = "-";
     return;
@@ -64,6 +66,7 @@ function pressOperator(op) {
 
 function pressEquals() {
   if (hasError.value) return;
+  if(display.value === "-")return;
 
   const a = Number(previousValue.value);
   const b = Number(display.value);
@@ -79,7 +82,7 @@ function pressEquals() {
       display.value = "Sin definir";
       hasError.value = true;
     } else {
-      display.value = String(a / b,);
+      display.value = String(a / b);
     }
   }
 }

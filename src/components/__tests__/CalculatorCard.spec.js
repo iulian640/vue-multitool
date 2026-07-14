@@ -263,14 +263,27 @@ describe('CalculatorCard', () => {
     {
         const wrapper = mount(CalculatorCard);
 
-        const botonMasMenos = wrapper.findAll('button').find(n => n.text () === "-");
+        const botonMenos = wrapper.findAll('button').find(n => n.text () === "-");
         const boton5 = wrapper.findAll('button').find(n => n.text () === "5");
 
-        await botonMasMenos.trigger('click');
+        await botonMenos.trigger('click');
         await boton5.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('-5')
     })
 
+    it('si pulsamos -, -, y = no da NaN', async () =>
+    {
+        const wrapper = mount(CalculatorCard);
+
+        const botonMenos = wrapper.findAll('button').find(n => n.text () === "-");
+        const botonEqual = wrapper.findAll('button').find(n => n.text() === "=");
+
+        await botonMenos.trigger('click');
+        await botonMenos.trigger('click');
+        await botonEqual.trigger('click');
+
+        expect(wrapper.find('.calc__display').text()).toBe('-')
+    })
 
 })
