@@ -11,7 +11,8 @@ const decimal = ".";
 const displayText = computed(() => display.value.replace(".", ","));
 
 function pressDigit(digit) {
-  if (display.value === "0") {
+  if (hasError.value) return;
+  else if (display.value === "0") {
     display.value = digit;
   } else {
     display.value += digit;
@@ -19,6 +20,7 @@ function pressDigit(digit) {
 }
 
 function pressCE() {
+  if (hasError.value) return;
   display.value = "0";
 }
 
@@ -26,15 +28,19 @@ function pressC() {
   display.value = "0";
   operator.value = "";
   previousValue.value = "";
+  hasError.value = false;
 }
+
 function pressComa() {
-  if (!display.value.includes(decimal)) {
+  if (hasError.value) return;
+  else if (!display.value.includes(decimal)) {
     display.value += decimal;
   }
 }
 
 function pressOperator(op) {
-  if (operator.value !== null) {
+  if (hasError.value) return;
+  else if (operator.value !== null) {
     pressEquals();
   }
   previousValue.value = display.value;

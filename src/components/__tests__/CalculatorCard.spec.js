@@ -221,6 +221,43 @@ describe('CalculatorCard', () => {
 
     })
 
+    it('5, ÷, 0, =, pulsar un número teniendo Sin definir bloqueado, solo permite C', async () => {
+        const wrapper = mount(CalculatorCard);
+
+        const boton5 = wrapper.findAll('button').find(n => n.text() === "5");
+        const botonDiv = wrapper.findAll('button').find(n => n.text() === "÷");
+        const boton0 = wrapper.findAll('button').find(n => n.text() === "0");
+        const botonEqual = wrapper.findAll('button').find(n => n.text() === "=");
+        const boton7 = wrapper.findAll('button').find(n => n.text() === "7");
+
+        await boton5.trigger('click');
+        await botonDiv.trigger('click');
+        await boton0.trigger('click');
+        await botonEqual.trigger('click');
+        await boton7.trigger('click');
+
+        expect(wrapper.find('.calc__display').text()).toBe('Sin definir');
+    })
+
+    it('5, ÷, 0, =, C desbloquea la calculadora y 7 vuelve a escribir', async () => {
+        const wrapper = mount(CalculatorCard);
+
+        const boton5 = wrapper.findAll('button').find(n => n.text() === "5");
+        const botonDiv = wrapper.findAll('button').find(n => n.text() === "÷");
+        const boton0 = wrapper.findAll('button').find(n => n.text() === "0");
+        const botonEqual = wrapper.findAll('button').find(n => n.text() === "=");
+        const botonC = wrapper.findAll('button').find(n => n.text() === "C");
+        const boton7 = wrapper.findAll('button').find(n => n.text() === "7");
+
+        await boton5.trigger('click');
+        await botonDiv.trigger('click');
+        await boton0.trigger('click');
+        await botonEqual.trigger('click');
+        await botonC.trigger('click');
+        await boton7.trigger('click');
+
+        expect(wrapper.find('.calc__display').text()).toBe('7');
+    })
 
 
 
