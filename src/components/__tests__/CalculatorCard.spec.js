@@ -259,9 +259,18 @@ describe('CalculatorCard', () => {
         expect(wrapper.find('.calc__display').text()).toBe('7');
     })
 
+    it('-, 5 hace que el valor sea -5(negativo)', async () =>
+    {
+        const wrapper = mount(CalculatorCard);
 
+        const botonMasMenos = wrapper.findAll('button').find(n => n.text () === "-");
+        const boton5 = wrapper.findAll('button').find(n => n.text () === "5");
 
+        await botonMasMenos.trigger('click');
+        await boton5.trigger('click');
 
+        expect(wrapper.find('.calc__display').text()).toBe('-5')
+    })
 
 
 })
