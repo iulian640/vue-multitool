@@ -286,4 +286,47 @@ describe('CalculatorCard', () => {
         expect(wrapper.find('.calc__display').text()).toBe('-')
     })
 
+
+    it('123 y backspace deja 12', async () =>
+    {
+        const wrapper = mount(CalculatorCard);
+
+        const boton1 = wrapper.findAll('button').find(n => n.text () === "1");
+        const boton2 = wrapper.findAll('button').find(n => n.text() === "2");
+        const boton3 = wrapper.findAll('button').find(n => n.text () === "3");
+        const botonBorrar = wrapper.findAll('button').find(n => n.text() === "⌫");
+        
+        await boton1.trigger('click');
+        await boton2.trigger('click');
+        await boton3.trigger('click');
+        await botonBorrar.trigger('click');
+
+        expect(wrapper.find('.calc__display').text()).toBe('12')
+    })
+
+    it('1 y ⌫ nos deja en 0', async () =>
+    {
+        const wrapper = mount(CalculatorCard);
+
+        const boton1 = wrapper.findAll('button').find(n => n.text () === "1");
+        const botonBorrar = wrapper.findAll('button').find(n => n.text() === "⌫");
+        
+        await boton1.trigger('click');
+        await botonBorrar.trigger('click');
+
+        expect(wrapper.find('.calc__display').text()).toBe('0')
+    })
+
+    it('- y ⌫ nos deja en 0', async () =>
+    {
+        const wrapper = mount(CalculatorCard);
+
+        const botonMenos = wrapper.findAll('button').find(n => n.text () === "-");
+        const botonBorrar = wrapper.findAll('button').find(n => n.text() === "⌫");
+        
+        await botonMenos.trigger('click');
+        await botonBorrar.trigger('click');
+
+        expect(wrapper.find('.calc__display').text()).toBe('0')
+    })
 })

@@ -11,9 +11,7 @@ const decimal = ".";
 const displayText = computed(() => display.value.replace(".", ","));
 
 function pressDigit(digit) {
-
   if (hasError.value) return;
-
   else if (display.value === "0") {
     display.value = digit;
   } else {
@@ -22,7 +20,6 @@ function pressDigit(digit) {
 }
 
 function pressCE() {
-
   if (hasError.value) return;
 
   display.value = "0";
@@ -36,26 +33,20 @@ function pressC() {
 }
 
 function pressComa() {
-
   if (hasError.value) return;
-
   else if (!display.value.includes(decimal)) {
     display.value += decimal;
   }
 }
 
 function pressOperator(op) {
-
   if (hasError.value) return;
 
   if (display.value === "-") return;
-  
-  else if(op === "-" && display.value === "0"){
+  else if (op === "-" && display.value === "0") {
     display.value = "-";
     return;
-  }
-
-  else if (operator.value !== null) {
+  } else if (operator.value !== null) {
     pressEquals();
   }
 
@@ -64,15 +55,23 @@ function pressOperator(op) {
   display.value = "0";
 }
 
+function pressBackspace() {
+  if (hasError.value) return;
+  display.value = display.value.slice(0, -1);
+  if (display.value === "") {
+    display.value = "0";
+  }
+}
+
 function pressEquals() {
   if (hasError.value) return;
-  if(display.value === "-")return;
+  if (display.value === "-") return;
 
   const a = Number(previousValue.value);
   const b = Number(display.value);
 
   if (operator.value === "+") {
-  display.value = String(a + b);
+    display.value = String(a + b);
   } else if (operator.value === "-") {
     display.value = String(a - b);
   } else if (operator.value === "x") {
@@ -101,5 +100,6 @@ function pressEquals() {
     <button @click="pressComa()">,</button>
     <button @click="pressCE()">CE</button>
     <button @click="pressC()">C</button>
+    <button @click="pressBackspace()">⌫</button>
   </section>
 </template>
