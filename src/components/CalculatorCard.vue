@@ -5,7 +5,7 @@ const display = ref("0");
 const previousValue = ref(null);
 const operator = ref(null);
 const hasError = ref(false);
-const MAX_DIGITS = 10
+const MAX_DIGITS = 10;
 const digits = ["7", "8", "9", "4", "5", "6", "1", "2", "3", "0"];
 const ops = ["+", "-", "x", "÷"];
 const decimal = ".";
@@ -71,21 +71,23 @@ function pressEquals() {
 
   const a = Number(previousValue.value);
   const b = Number(display.value);
-
+  let result;
   if (operator.value === "+") {
-    display.value = String(a + b);
+     result = a + b;
   } else if (operator.value === "-") {
-    display.value = String(a - b);
+    result= a - b;
   } else if (operator.value === "x") {
-    display.value = String(a * b);
+    result = a * b;
   } else if (operator.value === "÷") {
     if (display.value === "0") {
       display.value = "Sin definir";
       hasError.value = true;
+      return;
     } else {
-      display.value = String(a / b);
+      result = a / b;
     }
   }
+  display.value = String(Number(result).toFixed(8))
 }
 </script>
 

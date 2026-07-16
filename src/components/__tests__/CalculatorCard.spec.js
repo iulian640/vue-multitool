@@ -360,4 +360,21 @@ describe('CalculatorCard', () => {
 
         expect(wrapper.find('.calc__display').text()).toBe('1234567890')
     })
+
+    it('1, ÷, 3, =, 0,33333333 (8 decimales)', async () => {
+        const wrapper = mount(CalculatorCard);
+
+        const boton1 = wrapper.findAll('button').find(n => n.text() === "1");
+        const botonDiv = wrapper.findAll('button').find(n => n.text() === "÷");
+        const boton3 = wrapper.findAll('button').find(n => n.text() === "3");
+        const botonEqual = wrapper.findAll('button').find(n => n.text() === "=");
+
+        await boton1.trigger('click');
+        await botonDiv.trigger('click');
+        await boton3.trigger('click');
+        await botonEqual.trigger('click');
+        
+        expect(wrapper.find('.calc__display').text()).toBe('0,33333333');
+    })
+
 })
