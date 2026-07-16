@@ -1,5 +1,5 @@
 <script setup>
-// Conversor de divisas (EUR / USD / JPY) con currencyfreaks.com
+
 </script>
 
 <template>

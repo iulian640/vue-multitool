@@ -36,7 +36,7 @@ function handleKeydown(event) {
     pressOperator("-");
   } else if (event.key === "Backspace") {
     pressBackspace();
-  } else if (event.key === "," || event.key === "."){
+  } else if (event.key === "," || event.key === ".") {
     pressComa();
   }
 }
@@ -112,7 +112,7 @@ function pressEquals() {
     }
   }
   display.value = String(Number(result.toFixed(8)));
-  operator.value = null
+  operator.value = null;
 }
 </script>
 
