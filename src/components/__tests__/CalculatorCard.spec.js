@@ -6,7 +6,7 @@ describe('CalculatorCard', () => {
     it('Al montar el display muestra 0', () => {
         const wrapper = mount(CalculatorCard)
 
-        expect(wrapper.find('.calc__display').text()).toContain('0')
+        expect(wrapper.find('.calc__display').text()).toBe('0')
     })
 
     it('Pulsar 5 muestra 5', async () => {
@@ -16,7 +16,7 @@ describe('CalculatorCard', () => {
 
         await boton5.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toContain('5');
+        expect(wrapper.find('.calc__display').text()).toBe('5');
     })
 
     it('Pulsar 1 y 2 deja 12', async () => {
@@ -28,7 +28,7 @@ describe('CalculatorCard', () => {
         await boton1.trigger('click');
         await boton2.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toContain('12');
+        expect(wrapper.find('.calc__display').text()).toBe('12');
     })
 
     it('5 + 3 dabe dar 8', async () => {
@@ -44,7 +44,7 @@ describe('CalculatorCard', () => {
         await boton3.trigger('click');
         await botonEqual.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toContain('8')
+        expect(wrapper.find('.calc__display').text()).toBe('8')
     })
 
     it('5 - 3 debe dar 2', async () => {
@@ -60,7 +60,7 @@ describe('CalculatorCard', () => {
         await boton3.trigger('click');
         await botonEqual.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toContain('2')
+        expect(wrapper.find('.calc__display').text()).toBe('2')
 
     })
 
@@ -77,7 +77,7 @@ describe('CalculatorCard', () => {
         await boton3.trigger('click');
         await botonEqual.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toContain('6');
+        expect(wrapper.find('.calc__display').text()).toBe('6');
     })
 
     it('6 ÷ 2 debe dar 3', async () => {
@@ -93,7 +93,7 @@ describe('CalculatorCard', () => {
         await boton2.trigger('click');
         await botonEqual.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toContain('3');
+        expect(wrapper.find('.calc__display').text()).toBe('3');
     })
 
     it('Si pulsas "6" "," y "2" debe dar 6,2', async () => {
@@ -107,7 +107,7 @@ describe('CalculatorCard', () => {
         await botonComa.trigger('click');
         await boton2.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toContain('6,2')
+        expect(wrapper.find('.calc__display').text()).toBe('6,2')
     })
 
     it('No permite poner mas de una coma en un numero', async () => {
@@ -122,7 +122,7 @@ describe('CalculatorCard', () => {
         await botonComa.trigger('click');
         await boton1.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toContain('6,1')
+        expect(wrapper.find('.calc__display').text()).toBe('6,1')
     })
 
     it('CE borra el numero actual', async () => {
@@ -134,7 +134,7 @@ describe('CalculatorCard', () => {
         await boton6.trigger('click');
         await botonCE.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toContain('0')
+        expect(wrapper.find('.calc__display').text()).toBe('0')
     })
 
     it('C borra toda la operación', async () => {
@@ -168,7 +168,7 @@ describe('CalculatorCard', () => {
         await boton3.trigger('click')
         await botonEqual.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toContain('11')
+        expect(wrapper.find('.calc__display').text()).toBe('11')
     })
 
     it('5, ÷, 0 da "Sin definir"', async () => {
@@ -184,7 +184,7 @@ describe('CalculatorCard', () => {
         await boton0.trigger('click');
         await botonEqual.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toContain('Sin definir')
+        expect(wrapper.find('.calc__display').text()).toBe('Sin definir')
 
     })
 
@@ -200,7 +200,7 @@ describe('CalculatorCard', () => {
         await boton0.trigger('click');
         await botonEqual.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toContain('Sin definir')
+        expect(wrapper.find('.calc__display').text()).toBe('Sin definir')
 
     })
 
@@ -217,7 +217,7 @@ describe('CalculatorCard', () => {
         await botonEqual.trigger('click');
         await botonEqual.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toContain('Sin definir')
+        expect(wrapper.find('.calc__display').text()).toBe('Sin definir')
 
     })
 
