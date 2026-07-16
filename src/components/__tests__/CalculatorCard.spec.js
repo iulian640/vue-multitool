@@ -386,4 +386,25 @@ describe('CalculatorCard', () => {
         expect(wrapper.find('.calc__display').text()).toBe('5');
     })
 
+    it('teclas fisicas 2, *, 3 y enter dan 6', async () => {
+        const wrapper = mount(CalculatorCard);
+
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: '2'}));
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: '*'}));
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: '3'}));
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter'}));
+        await wrapper.vm.$nextTick();
+
+        expect(wrapper.find('.calc__display').text()).toBe('6');
+    })
+
+    it('"enter" y display sigue en 0', async () => {
+        const wrapper = mount(CalculatorCard);
+
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter'}));
+        await wrapper.vm.$nextTick();
+
+        expect(wrapper.find('.calc__display').text()).toBe('0');
+    })
+
 })

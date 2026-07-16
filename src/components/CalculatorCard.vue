@@ -25,6 +25,18 @@ function handleKeydown(event) {
   if(digits.includes(event.key)) {
     pressDigit(event.key);
   }
+  else if(event.key === "*"){
+    pressOperator("x");
+  }
+
+  else if(event.key === "Enter"){
+    pressEquals()
+  }
+
+  else if(event. key === "+"){
+    pressOperator("+")
+  }
+
 }
 
 onMounted(() => window.addEventListener('keydown', handleKeydown));
@@ -61,6 +73,7 @@ function pressOperator(op) {
     pressEquals();
   }
 
+
   previousValue.value = display.value;
   operator.value = op;
   display.value = "0";
@@ -77,6 +90,7 @@ function pressBackspace() {
 function pressEquals() {
   if (hasError.value) return;
   if (display.value === "-") return;
+  if (!operator.value) return;
 
   const a = Number(previousValue.value);
   const b = Number(display.value);
@@ -96,7 +110,7 @@ function pressEquals() {
       result = a / b;
     }
   }
-  display.value = String(Number(result).toFixed(8))
+  display.value = String(Number(result.toFixed(8)));
 }
 </script>
 
