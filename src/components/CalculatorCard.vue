@@ -22,25 +22,27 @@ function pressDigit(digit) {
 }
 
 function handleKeydown(event) {
-  if(digits.includes(event.key)) {
+  if (digits.includes(event.key)) {
     pressDigit(event.key);
-  }
-  else if(event.key === "*"){
+  } else if (event.key === "Enter") {
+    pressEquals();
+  } else if (event.key === "*") {
     pressOperator("x");
+  } else if (event.key === "/") {
+    pressOperator("÷");
+  } else if (event.key === "+") {
+    pressOperator("+");
+  } else if (event.key === "-") {
+    pressOperator("-");
+  } else if (event.key === "Backspace") {
+    pressBackspace();
+  } else if (event.key === "," || event.key === "."){
+    pressComa();
   }
-
-  else if(event.key === "Enter"){
-    pressEquals()
-  }
-
-  else if(event. key === "+"){
-    pressOperator("+")
-  }
-
 }
 
-onMounted(() => window.addEventListener('keydown', handleKeydown));
-onUnmounted(() => window.removeEventListener('keydown', handleKeydown));
+onMounted(() => window.addEventListener("keydown", handleKeydown));
+onUnmounted(() => window.removeEventListener("keydown", handleKeydown));
 
 function pressCE() {
   if (hasError.value) return;
@@ -73,7 +75,6 @@ function pressOperator(op) {
     pressEquals();
   }
 
-
   previousValue.value = display.value;
   operator.value = op;
   display.value = "0";
@@ -96,9 +97,9 @@ function pressEquals() {
   const b = Number(display.value);
   let result;
   if (operator.value === "+") {
-     result = a + b;
+    result = a + b;
   } else if (operator.value === "-") {
-    result= a - b;
+    result = a - b;
   } else if (operator.value === "x") {
     result = a * b;
   } else if (operator.value === "÷") {

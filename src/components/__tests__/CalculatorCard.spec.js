@@ -407,4 +407,35 @@ describe('CalculatorCard', () => {
         expect(wrapper.find('.calc__display').text()).toBe('0');
     })
 
+    it('teclas fisicas 1, 2 y Backspace dejan 1', async () => {
+        const wrapper = mount(CalculatorCard);
+
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: '1'}));
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: '2'}));
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Backspace'}));
+        await wrapper.vm.$nextTick();
+
+        expect(wrapper.find('.calc__display').text()).toBe('1');
+    })
+
+    it('teclas fisicas 1 y "," escriben 1,', async () => {
+        const wrapper = mount(CalculatorCard);
+
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: '1'}));
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: ','}));
+        await wrapper.vm.$nextTick();
+
+        expect(wrapper.find('.calc__display').text()).toBe('1,');
+    })
+
+    it('teclas fisicas 1 y "." del numpad escriben 1,', async () => {
+        const wrapper = mount(CalculatorCard);
+
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: '1'}));
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: '.'}));
+        await wrapper.vm.$nextTick();
+
+        expect(wrapper.find('.calc__display').text()).toBe('1,');
+    })
+
 })
