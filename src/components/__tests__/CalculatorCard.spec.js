@@ -438,4 +438,23 @@ describe('CalculatorCard', () => {
         expect(wrapper.find('.calc__display').text()).toBe('1,');
     })
 
+    it('2, ÷, 2, =, x, 2, debe dar 2', async() =>{
+    
+    const wrapper = mount(CalculatorCard);
+
+        const boton2 = wrapper.findAll('button').find(n => n.text() === "2");
+        const botonDiv = wrapper.findAll('button').find(n => n.text() === "÷");
+        const botonPor = wrapper.findAll('button').find(n => n.text() === "x");
+        const botonEqual = wrapper.findAll('button').find(n => n.text() === "=");
+
+        await boton2.trigger('click');
+        await botonDiv.trigger('click');
+        await boton2.trigger('click');
+        await botonEqual.trigger('click');
+        await botonPor.trigger('click');
+        await boton2.trigger('click');
+        await botonEqual.trigger('click');
+        
+        expect(wrapper.find('.calc__display').text()).toBe('2');
+        })
 })
