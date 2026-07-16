@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted, onUnmounted } from "vue";
 
 const display = ref("0");
 const previousValue = ref(null);
@@ -20,6 +20,15 @@ function pressDigit(digit) {
     display.value += digit;
   }
 }
+
+function handleKeydown(event) {
+  if(digits.includes(event.key)) {
+    pressDigit(event.key);
+  }
+}
+
+onMounted(() => window.addEventListener('keydown', handleKeydown));
+onUnmounted(() => window.removeEventListener('keydown', handleKeydown));
 
 function pressCE() {
   if (hasError.value) return;

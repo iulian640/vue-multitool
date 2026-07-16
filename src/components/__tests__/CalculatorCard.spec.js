@@ -373,8 +373,17 @@ describe('CalculatorCard', () => {
         await botonDiv.trigger('click');
         await boton3.trigger('click');
         await botonEqual.trigger('click');
-        
+
         expect(wrapper.find('.calc__display').text()).toBe('0,33333333');
+    })
+
+    it('pulsar la tecla física 5 y recibir 5', async () => {
+        const wrapper = mount(CalculatorCard);
+
+        window.dispatchEvent(new KeyboardEvent('keydown', { key: '5'}));
+        await wrapper.vm.$nextTick();
+        
+        expect(wrapper.find('.calc__display').text()).toBe('5');
     })
 
 })
