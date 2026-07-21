@@ -1,8 +1,12 @@
 <script setup>
 import { ref } from "vue";
+import { getRates } from "../services/currency";
+
 const origen = ref("EUR");
 const destino = ref("USD");
 const cantidad = ref("");
+
+getRates();
 </script>
 <template>
   <section class="card">
