@@ -6,6 +6,7 @@ const origen = ref("EUR");
 const destino = ref("USD");
 const cantidad = ref("");
 const rates = ref(null);
+const APIerror = ref("");
 
 const resultado = computed(() => {
   if (!rates.value || !cantidad.value) return "";
@@ -16,7 +17,11 @@ const resultado = computed(() => {
 });
 
 async function cargarTasas() {
-  rates.value = await getRates();
+  try {
+    rates.value = await getRates();
+  } catch {
+    APIerror.value = "No se pueden cargar las tasas";
+  }
 }
 cargarTasas();
 </script>
@@ -35,5 +40,6 @@ cargarTasas();
       <option value="JPY">JPY</option>
     </select>
     <p>{{ resultado }}</p>
+    <p>{{ APIerror }}</p>
   </section>
 </template>
