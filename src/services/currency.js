@@ -7,4 +7,6 @@ export async function getRates() {
   const respuesta = await axios.get(
     `${BASE_URL}/rates/latest?apikey=${API_KEY}`,
   );
+
+  return respuesta.data.rates;
 }
