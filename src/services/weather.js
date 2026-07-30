@@ -5,6 +5,5 @@ export async function getWeather() {
     `https://api.el-tiempo.net/json/v3/provincias/33`,
   );
 
-  console.log(respuesta.data.ciudades[0]);
   return respuesta.data.ciudades.find((ciudad) => ciudad.id[0] === "33044");
 }

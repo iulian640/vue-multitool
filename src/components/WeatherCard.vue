@@ -19,7 +19,11 @@ cargarweather();
 <template>
   <section class="card">
     <h2 class="card__title">El Tiempo</h2>
-    <p v-if="ciudad">{{ ciudad.name }}</p>
+    <div v-if="ciudad">
+      <p>{{ ciudad.name }}</p>
+      <p>{{ ciudad.temperatures.max }}°/ {{ ciudad.temperatures.min }}°</p>
+      <p>{{ ciudad.stateSky.description }}</p>
+    </div>
     <p v-if="error">{{ error }}</p>
   </section>
 </template>
