@@ -107,3 +107,22 @@ button {
   padding: var(--space-2);
   font-size: 1.1rem;
 }
+
+.calc__display {
+  background: var(--color-surface-2);
+  border-radius: var(--radius-btn);
+  padding: var(--space-2);
+  text-align: right;
+  margin-bottom: var(--space-2);
+}
+
+.calc__expression {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  min-height: 1rem;
+}
+
+.calc__number {
+  font-size: 2.2rem;
+  font-weight: 600;
+}

@@ -121,8 +121,10 @@ function pressEquals() {
 <template>
   <section class="card">
     <h2 class="card__title">Calculadora</h2>
-    <div class="calc__display">{{ displayText }}</div>
-    <p class="calc__expression">{{ previousValue }} {{ operator }}</p>
+    <div class="calc__display">
+      <p class="calc__expression">{{ previousValue }} {{ operator }}</p>
+      <p class="calc__number">{{ displayText }}</p>
+    </div>
     <div class="calc__keys">
       <button class="key--danger" @click="pressCE()">CE</button>
       <button class="key--danger" @click="pressC()">C</button>
