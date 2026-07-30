@@ -1,35 +1,197 @@
-@import './base.css';
+/* ===== Design tokens ===== */
+:root {
+  /* Colores */
+  --color-bg: #0d0d0f;
+  --color-surface: #1a1a1e;
+  --color-surface-2: #26262c;
+  --color-text: #f4f4f5;
+  --color-text-muted: #8e8e96;
+  --color-accent: #ff9f0a;
+  --color-accent-text: #1a1207;
+  --color-danger: #ff453a;
 
+  /* Radios y espaciado */
+  --radius-card: 20px;
+  --radius-btn: 14px;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+
+  /* Tipografía */
+  --font-main: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.calc__keys .key--op {
+  color: var(--color-accent);
+}
+.calc__keys .key--danger {
+  color: var(--color-danger);
+}
+.calc__keys .key--equals {
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+}
+.calc__keys .key--zero {
+  grid-column: span 2;
+}
+/* ===== Reset básico ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-main);
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+/* ===== Layout mobile first ===== */
 #app {
-  max-width: 1280px;
+  max-width: 420px;
   margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+  padding: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  padding: var(--space-2);
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+.card__title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
+/* En pantallas grandes: los módulos en fila */
+@media (min-width: 900px) {
   #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+    max-width: 1100px;
+    flex-direction: row;
+    align-items: flex-start;
   }
+
+  #app > * {
+    flex: 1;
+  }
+}
+
+.calc__keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-1);
+}
+
+.calc__keys button {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  border-radius: var(--radius-btn);
+  padding: var(--space-2);
+  font-size: 1.1rem;
+}
+
+.calc__display {
+  background: var(--color-surface-2);
+  border-radius: var(--radius-btn);
+  padding: var(--space-2);
+  text-align: right;
+  margin-bottom: var(--space-2);
+}
+
+.calc__expression {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  min-height: 1rem;
+}
+
+.calc__number {
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+.card input,
+.card select {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  border: none;
+  border-radius: var(--radius-btn);
+  padding: var(--space-2);
+  font-family: inherit;
+  width: 100%;
+}
+
+.currency__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+}
+
+.currency__swap {
+  color: var(--color-accent);
+}
+
+.currency__result {
+  margin-top: var(--space-2);
+  color: var(--color-text-muted);
+}
+
+.currency__result strong {
+  color: var(--color-accent);
+  font-size: 1.2rem;
+}
+
+.weather {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.weather__icon {
+  width: 90px;
+}
+
+.weather__temp {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.weather__desc {
+  color: var(--color-text-muted);
+}
+
+.weather__min {
+  font-size: 1.2rem;
+  color: var(--color-text-muted);
+}
+
+.calc__memory {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+}
+
+.calc__memory button {
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  border-radius: var(--radius-btn);
+  padding: var(--space-2);
 }
