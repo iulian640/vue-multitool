@@ -18,9 +18,22 @@
   --space-3: 1.5rem;
 
   /* Tipografía */
-  --font-main: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-main: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
+.calc__keys .key--op {
+  color: var(--color-accent);
+}
+.calc__keys .key--danger {
+  color: var(--color-danger);
+}
+.calc__keys .key--equals {
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+}
+.calc__keys .key--zero {
+  grid-column: span 2;
+}
 /* ===== Reset básico ===== */
 *,
 *::before,
@@ -79,4 +92,18 @@ button {
   #app > * {
     flex: 1;
   }
+}
+
+.calc__keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-1);
+}
+
+.calc__keys button {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  border-radius: var(--radius-btn);
+  padding: var(--space-2);
+  font-size: 1.1rem;
 }
