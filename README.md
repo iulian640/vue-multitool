@@ -2,6 +2,14 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
+## Mockups
+
+Diseño previo de la vista única (mobile first, tres módulos: calculadora, divisas y el tiempo).
+
+| Móvil (390px) | Escritorio (≥900px) |
+| --- | --- |
+| ![Mockup móvil](docs/mockups/mockup-mobile.png) | ![Mockup escritorio](docs/mockups/mockup-desktop.png) |
+
 ## Recommended IDE Setup
 
 [VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).

@@ -12,9 +12,9 @@ describe('CalculatorCard', () => {
     it('Pulsar 5 muestra 5', async () => {
         const wrapper = mount(CalculatorCard);
 
-        const boton5 = wrapper.findAll('button').find(n => n.text() === '5');
+        const button5 = wrapper.findAll('button').find(n => n.text() === '5');
 
-        await boton5.trigger('click');
+        await button5.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('5');
     })
@@ -22,11 +22,11 @@ describe('CalculatorCard', () => {
     it('Pulsar 1 y 2 deja 12', async () => {
         const wrapper = mount(CalculatorCard);
 
-        const boton1 = wrapper.findAll('button').find(n => n.text() === "1");
-        const boton2 = wrapper.findAll('button').find(n => n.text() === "2");
+        const button1 = wrapper.findAll('button').find(n => n.text() === "1");
+        const button2 = wrapper.findAll('button').find(n => n.text() === "2");
 
-        await boton1.trigger('click');
-        await boton2.trigger('click');
+        await button1.trigger('click');
+        await button2.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('12');
     })
@@ -34,15 +34,15 @@ describe('CalculatorCard', () => {
     it('5 + 3 dabe dar 8', async () => {
         const wrapper = mount(CalculatorCard);
 
-        const boton5 = wrapper.findAll('button').find(n => n.text() === "5")
-        const botonMas = wrapper.findAll('button').find(n => n.text() === "+")
-        const boton3 = wrapper.findAll('button').find(n => n.text() === "3")
-        const botonEqual = wrapper.findAll('button').find(n => n.text() === "=")
+        const button5 = wrapper.findAll('button').find(n => n.text() === "5")
+        const buttonPlus = wrapper.findAll('button').find(n => n.text() === "+")
+        const button3 = wrapper.findAll('button').find(n => n.text() === "3")
+        const buttonEquals = wrapper.findAll('button').find(n => n.text() === "=")
 
-        await boton5.trigger('click');
-        await botonMas.trigger('click');
-        await boton3.trigger('click');
-        await botonEqual.trigger('click');
+        await button5.trigger('click');
+        await buttonPlus.trigger('click');
+        await button3.trigger('click');
+        await buttonEquals.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('8')
     })
@@ -50,15 +50,15 @@ describe('CalculatorCard', () => {
     it('5 - 3 debe dar 2', async () => {
         const wrapper = mount(CalculatorCard);
 
-        const boton5 = wrapper.findAll('button').find(n => n.text() === "5");
-        const botonMenos = wrapper.findAll('button').find(n => n.text() === "-");
-        const boton3 = wrapper.findAll('button').find(n => n.text() === "3");
-        const botonEqual = wrapper.findAll('button').find(n => n.text() === "=");
+        const button5 = wrapper.findAll('button').find(n => n.text() === "5");
+        const buttonMinus = wrapper.findAll('button').find(n => n.text() === "-");
+        const button3 = wrapper.findAll('button').find(n => n.text() === "3");
+        const buttonEquals = wrapper.findAll('button').find(n => n.text() === "=");
 
-        await boton5.trigger('click');
-        await botonMenos.trigger('click');
-        await boton3.trigger('click');
-        await botonEqual.trigger('click');
+        await button5.trigger('click');
+        await buttonMinus.trigger('click');
+        await button3.trigger('click');
+        await buttonEquals.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('2')
 
@@ -67,15 +67,15 @@ describe('CalculatorCard', () => {
     it('2 x 3 debe dar 6', async () => {
         const wrapper = mount(CalculatorCard);
 
-        const boton2 = wrapper.findAll('button').find(n => n.text() === "2");
-        const botonPor = wrapper.findAll('button').find(n => n.text() === "x");
-        const boton3 = wrapper.findAll('button').find(n => n.text() === "3");
-        const botonEqual = wrapper.findAll('button').find(n => n.text() === "=");
+        const button2 = wrapper.findAll('button').find(n => n.text() === "2");
+        const buttonMultiply = wrapper.findAll('button').find(n => n.text() === "x");
+        const button3 = wrapper.findAll('button').find(n => n.text() === "3");
+        const buttonEquals = wrapper.findAll('button').find(n => n.text() === "=");
 
-        await boton2.trigger('click');
-        await botonPor.trigger('click');
-        await boton3.trigger('click');
-        await botonEqual.trigger('click');
+        await button2.trigger('click');
+        await buttonMultiply.trigger('click');
+        await button3.trigger('click');
+        await buttonEquals.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('6');
     })
@@ -83,15 +83,15 @@ describe('CalculatorCard', () => {
     it('6 ÷ 2 debe dar 3', async () => {
         const wrapper = mount(CalculatorCard);
 
-        const boton6 = wrapper.findAll('button').find(n => n.text() === "6");
-        const botonDiv = wrapper.findAll('button').find(n => n.text() === "÷");
-        const boton2 = wrapper.findAll('button').find(n => n.text() === "2")
-        const botonEqual = wrapper.findAll('button').find(n => n.text() === "=");
+        const button6 = wrapper.findAll('button').find(n => n.text() === "6");
+        const buttonDivide = wrapper.findAll('button').find(n => n.text() === "÷");
+        const button2 = wrapper.findAll('button').find(n => n.text() === "2")
+        const buttonEquals = wrapper.findAll('button').find(n => n.text() === "=");
 
-        await boton6.trigger('click');
-        await botonDiv.trigger('click');
-        await boton2.trigger('click');
-        await botonEqual.trigger('click');
+        await button6.trigger('click');
+        await buttonDivide.trigger('click');
+        await button2.trigger('click');
+        await buttonEquals.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('3');
     })
@@ -99,13 +99,13 @@ describe('CalculatorCard', () => {
     it('Si pulsas "6" "," y "2" debe dar 6,2', async () => {
         const wrapper = mount(CalculatorCard);
 
-        const boton6 = wrapper.findAll('button').find(n => n.text() === "6");
-        const botonComa = wrapper.findAll('button').find(n => n.text() === ",");
-        const boton2 = wrapper.findAll('button').find(n => n.text() === "2");
+        const button6 = wrapper.findAll('button').find(n => n.text() === "6");
+        const buttonComma = wrapper.findAll('button').find(n => n.text() === ",");
+        const button2 = wrapper.findAll('button').find(n => n.text() === "2");
 
-        await boton6.trigger('click');
-        await botonComa.trigger('click');
-        await boton2.trigger('click');
+        await button6.trigger('click');
+        await buttonComma.trigger('click');
+        await button2.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('6,2')
     })
@@ -113,14 +113,14 @@ describe('CalculatorCard', () => {
     it('No permite poner mas de una coma en un numero', async () => {
         const wrapper = mount(CalculatorCard);
 
-        const boton6 = wrapper.findAll('button').find(n => n.text() === "6");
-        const botonComa = wrapper.findAll('button').find(n => n.text() === ",");
-        const boton1 = wrapper.findAll('button').find(n => n.text() === "1");
+        const button6 = wrapper.findAll('button').find(n => n.text() === "6");
+        const buttonComma = wrapper.findAll('button').find(n => n.text() === ",");
+        const button1 = wrapper.findAll('button').find(n => n.text() === "1");
 
-        await boton6.trigger('click');
-        await botonComa.trigger('click');
-        await botonComa.trigger('click');
-        await boton1.trigger('click');
+        await button6.trigger('click');
+        await buttonComma.trigger('click');
+        await buttonComma.trigger('click');
+        await button1.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('6,1')
     })
@@ -128,11 +128,11 @@ describe('CalculatorCard', () => {
     it('CE borra el numero actual', async () => {
         const wrapper = mount(CalculatorCard);
 
-        const boton6 = wrapper.findAll('button').find(n => n.text() === "6")
-        const botonCE = wrapper.findAll('button').find(n => n.text() === "CE")
+        const button6 = wrapper.findAll('button').find(n => n.text() === "6")
+        const buttonCE = wrapper.findAll('button').find(n => n.text() === "CE")
 
-        await boton6.trigger('click');
-        await botonCE.trigger('click');
+        await button6.trigger('click');
+        await buttonCE.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('0')
     })
@@ -140,15 +140,15 @@ describe('CalculatorCard', () => {
     it('C borra toda la operación', async () => {
         const wrapper = mount(CalculatorCard);
 
-        const boton6 = wrapper.findAll('button').find(n => n.text() === "6");
-        const botonMas = wrapper.findAll('button').find(n => n.text() === "+");
-        const boton2 = wrapper.findAll('button').find(n => n.text() === "2");
-        const botonC = wrapper.findAll('button').find(n => n.text() === "C")
+        const button6 = wrapper.findAll('button').find(n => n.text() === "6");
+        const buttonPlus = wrapper.findAll('button').find(n => n.text() === "+");
+        const button2 = wrapper.findAll('button').find(n => n.text() === "2");
+        const buttonC = wrapper.findAll('button').find(n => n.text() === "C")
 
-        await boton6.trigger('click');
-        await botonMas.trigger('click');
-        await boton2.trigger('click');
-        await botonC.trigger('click');
+        await button6.trigger('click');
+        await buttonPlus.trigger('click');
+        await button2.trigger('click');
+        await buttonC.trigger('click');
 
         expect(wrapper.find('.calc__expression').text()).toBe('');
     })
@@ -156,17 +156,17 @@ describe('CalculatorCard', () => {
     it('5, +, 3, +, 3, = deben dar 11 con total acumulado', async () => {
         const wrapper = mount(CalculatorCard);
 
-        const boton5 = wrapper.findAll('button').find(n => n.text() === "5");
-        const botonMas = wrapper.findAll('button').find(n => n.text() === "+");
-        const boton3 = wrapper.findAll('button').find(n => n.text() === "3");
-        const botonEqual = wrapper.findAll('button').find(n => n.text() === "=")
+        const button5 = wrapper.findAll('button').find(n => n.text() === "5");
+        const buttonPlus = wrapper.findAll('button').find(n => n.text() === "+");
+        const button3 = wrapper.findAll('button').find(n => n.text() === "3");
+        const buttonEquals = wrapper.findAll('button').find(n => n.text() === "=")
 
-        await boton5.trigger('click');
-        await botonMas.trigger('click');
-        await boton3.trigger('click');
-        await botonMas.trigger('click');
-        await boton3.trigger('click')
-        await botonEqual.trigger('click');
+        await button5.trigger('click');
+        await buttonPlus.trigger('click');
+        await button3.trigger('click');
+        await buttonPlus.trigger('click');
+        await button3.trigger('click')
+        await buttonEquals.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('11')
     })
@@ -174,15 +174,15 @@ describe('CalculatorCard', () => {
     it('5, ÷, 0 da "Sin definir"', async () => {
         const wrapper = mount(CalculatorCard);
 
-        const boton5 = wrapper.findAll('button').find(n => n.text() === "5");
-        const botonDiv = wrapper.findAll('button').find(n => n.text() === "÷");
-        const boton0 = wrapper.findAll('button').find(n => n.text() === "0");
-        const botonEqual = wrapper.findAll('button').find(n => n.text() === "=");
+        const button5 = wrapper.findAll('button').find(n => n.text() === "5");
+        const buttonDivide = wrapper.findAll('button').find(n => n.text() === "÷");
+        const button0 = wrapper.findAll('button').find(n => n.text() === "0");
+        const buttonEquals = wrapper.findAll('button').find(n => n.text() === "=");
 
-        await boton5.trigger('click');
-        await botonDiv.trigger('click');
-        await boton0.trigger('click');
-        await botonEqual.trigger('click');
+        await button5.trigger('click');
+        await buttonDivide.trigger('click');
+        await button0.trigger('click');
+        await buttonEquals.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('Sin definir')
 
@@ -191,14 +191,14 @@ describe('CalculatorCard', () => {
     it('0, ÷, 0 da "Sin definir"', async () => {
         const wrapper = mount(CalculatorCard);
 
-        const botonDiv = wrapper.findAll('button').find(n => n.text() === "÷");
-        const boton0 = wrapper.findAll('button').find(n => n.text() === "0");
-        const botonEqual = wrapper.findAll('button').find(n => n.text() === "=");
+        const buttonDivide = wrapper.findAll('button').find(n => n.text() === "÷");
+        const button0 = wrapper.findAll('button').find(n => n.text() === "0");
+        const buttonEquals = wrapper.findAll('button').find(n => n.text() === "=");
 
-        await boton0.trigger('click');
-        await botonDiv.trigger('click');
-        await boton0.trigger('click');
-        await botonEqual.trigger('click');
+        await button0.trigger('click');
+        await buttonDivide.trigger('click');
+        await button0.trigger('click');
+        await buttonEquals.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('Sin definir')
 
@@ -207,15 +207,15 @@ describe('CalculatorCard', () => {
     it('0, ÷, 0 , =, = da "Sin definir"', async () => {
         const wrapper = mount(CalculatorCard);
 
-        const botonDiv = wrapper.findAll('button').find(n => n.text() === "÷");
-        const boton0 = wrapper.findAll('button').find(n => n.text() === "0");
-        const botonEqual = wrapper.findAll('button').find(n => n.text() === "=");
+        const buttonDivide = wrapper.findAll('button').find(n => n.text() === "÷");
+        const button0 = wrapper.findAll('button').find(n => n.text() === "0");
+        const buttonEquals = wrapper.findAll('button').find(n => n.text() === "=");
 
-        await boton0.trigger('click');
-        await botonDiv.trigger('click');
-        await boton0.trigger('click');
-        await botonEqual.trigger('click');
-        await botonEqual.trigger('click');
+        await button0.trigger('click');
+        await buttonDivide.trigger('click');
+        await button0.trigger('click');
+        await buttonEquals.trigger('click');
+        await buttonEquals.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('Sin definir')
 
@@ -224,17 +224,17 @@ describe('CalculatorCard', () => {
     it('5, ÷, 0, =, pulsar un número teniendo Sin definir bloqueado, solo permite C', async () => {
         const wrapper = mount(CalculatorCard);
 
-        const boton5 = wrapper.findAll('button').find(n => n.text() === "5");
-        const botonDiv = wrapper.findAll('button').find(n => n.text() === "÷");
-        const boton0 = wrapper.findAll('button').find(n => n.text() === "0");
-        const botonEqual = wrapper.findAll('button').find(n => n.text() === "=");
-        const boton7 = wrapper.findAll('button').find(n => n.text() === "7");
+        const button5 = wrapper.findAll('button').find(n => n.text() === "5");
+        const buttonDivide = wrapper.findAll('button').find(n => n.text() === "÷");
+        const button0 = wrapper.findAll('button').find(n => n.text() === "0");
+        const buttonEquals = wrapper.findAll('button').find(n => n.text() === "=");
+        const button7 = wrapper.findAll('button').find(n => n.text() === "7");
 
-        await boton5.trigger('click');
-        await botonDiv.trigger('click');
-        await boton0.trigger('click');
-        await botonEqual.trigger('click');
-        await boton7.trigger('click');
+        await button5.trigger('click');
+        await buttonDivide.trigger('click');
+        await button0.trigger('click');
+        await buttonEquals.trigger('click');
+        await button7.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('Sin definir');
     })
@@ -242,19 +242,19 @@ describe('CalculatorCard', () => {
     it('5, ÷, 0, =, C desbloquea la calculadora y 7 vuelve a escribir', async () => {
         const wrapper = mount(CalculatorCard);
 
-        const boton5 = wrapper.findAll('button').find(n => n.text() === "5");
-        const botonDiv = wrapper.findAll('button').find(n => n.text() === "÷");
-        const boton0 = wrapper.findAll('button').find(n => n.text() === "0");
-        const botonEqual = wrapper.findAll('button').find(n => n.text() === "=");
-        const botonC = wrapper.findAll('button').find(n => n.text() === "C");
-        const boton7 = wrapper.findAll('button').find(n => n.text() === "7");
+        const button5 = wrapper.findAll('button').find(n => n.text() === "5");
+        const buttonDivide = wrapper.findAll('button').find(n => n.text() === "÷");
+        const button0 = wrapper.findAll('button').find(n => n.text() === "0");
+        const buttonEquals = wrapper.findAll('button').find(n => n.text() === "=");
+        const buttonC = wrapper.findAll('button').find(n => n.text() === "C");
+        const button7 = wrapper.findAll('button').find(n => n.text() === "7");
 
-        await boton5.trigger('click');
-        await botonDiv.trigger('click');
-        await boton0.trigger('click');
-        await botonEqual.trigger('click');
-        await botonC.trigger('click');
-        await boton7.trigger('click');
+        await button5.trigger('click');
+        await buttonDivide.trigger('click');
+        await button0.trigger('click');
+        await buttonEquals.trigger('click');
+        await buttonC.trigger('click');
+        await button7.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('7');
     })
@@ -263,11 +263,11 @@ describe('CalculatorCard', () => {
     {
         const wrapper = mount(CalculatorCard);
 
-        const botonMenos = wrapper.findAll('button').find(n => n.text () === "-");
-        const boton5 = wrapper.findAll('button').find(n => n.text () === "5");
+        const buttonMinus = wrapper.findAll('button').find(n => n.text () === "-");
+        const button5 = wrapper.findAll('button').find(n => n.text () === "5");
 
-        await botonMenos.trigger('click');
-        await boton5.trigger('click');
+        await buttonMinus.trigger('click');
+        await button5.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('-5')
     })
@@ -276,12 +276,12 @@ describe('CalculatorCard', () => {
     {
         const wrapper = mount(CalculatorCard);
 
-        const botonMenos = wrapper.findAll('button').find(n => n.text () === "-");
-        const botonEqual = wrapper.findAll('button').find(n => n.text() === "=");
+        const buttonMinus = wrapper.findAll('button').find(n => n.text () === "-");
+        const buttonEquals = wrapper.findAll('button').find(n => n.text() === "=");
 
-        await botonMenos.trigger('click');
-        await botonMenos.trigger('click');
-        await botonEqual.trigger('click');
+        await buttonMinus.trigger('click');
+        await buttonMinus.trigger('click');
+        await buttonEquals.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('-')
     })
@@ -291,15 +291,15 @@ describe('CalculatorCard', () => {
     {
         const wrapper = mount(CalculatorCard);
 
-        const boton1 = wrapper.findAll('button').find(n => n.text () === "1");
-        const boton2 = wrapper.findAll('button').find(n => n.text() === "2");
-        const boton3 = wrapper.findAll('button').find(n => n.text () === "3");
-        const botonBorrar = wrapper.findAll('button').find(n => n.text() === "⌫");
+        const button1 = wrapper.findAll('button').find(n => n.text () === "1");
+        const button2 = wrapper.findAll('button').find(n => n.text() === "2");
+        const button3 = wrapper.findAll('button').find(n => n.text () === "3");
+        const buttonBackspace = wrapper.findAll('button').find(n => n.text() === "⌫");
         
-        await boton1.trigger('click');
-        await boton2.trigger('click');
-        await boton3.trigger('click');
-        await botonBorrar.trigger('click');
+        await button1.trigger('click');
+        await button2.trigger('click');
+        await button3.trigger('click');
+        await buttonBackspace.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('12')
     })
@@ -308,11 +308,11 @@ describe('CalculatorCard', () => {
     {
         const wrapper = mount(CalculatorCard);
 
-        const boton1 = wrapper.findAll('button').find(n => n.text () === "1");
-        const botonBorrar = wrapper.findAll('button').find(n => n.text() === "⌫");
+        const button1 = wrapper.findAll('button').find(n => n.text () === "1");
+        const buttonBackspace = wrapper.findAll('button').find(n => n.text() === "⌫");
         
-        await boton1.trigger('click');
-        await botonBorrar.trigger('click');
+        await button1.trigger('click');
+        await buttonBackspace.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('0')
     })
@@ -321,11 +321,11 @@ describe('CalculatorCard', () => {
     {
         const wrapper = mount(CalculatorCard);
 
-        const botonMenos = wrapper.findAll('button').find(n => n.text () === "-");
-        const botonBorrar = wrapper.findAll('button').find(n => n.text() === "⌫");
+        const buttonMinus = wrapper.findAll('button').find(n => n.text () === "-");
+        const buttonBackspace = wrapper.findAll('button').find(n => n.text() === "⌫");
         
-        await botonMenos.trigger('click');
-        await botonBorrar.trigger('click');
+        await buttonMinus.trigger('click');
+        await buttonBackspace.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('0')
     })
@@ -334,29 +334,29 @@ describe('CalculatorCard', () => {
     {
         const wrapper = mount(CalculatorCard);
 
-        const boton1 = wrapper.findAll('button').find(n => n.text () === "1");
-        const boton2 = wrapper.findAll('button').find(n => n.text() === "2");
-        const boton3 = wrapper.findAll('button').find(n => n.text () === "3");
-        const boton4 = wrapper.findAll('button').find(n => n.text() === "4");
-        const boton5 = wrapper.findAll('button').find(n => n.text () === "5");
-        const boton6 = wrapper.findAll('button').find(n => n.text() === "6");
-        const boton7 = wrapper.findAll('button').find(n => n.text () === "7");
-        const boton8 = wrapper.findAll('button').find(n => n.text() === "8");
-        const boton9 = wrapper.findAll('button').find(n => n.text () === "9");
-        const boton0 = wrapper.findAll('button').find(n => n.text() === "0");
+        const button1 = wrapper.findAll('button').find(n => n.text () === "1");
+        const button2 = wrapper.findAll('button').find(n => n.text() === "2");
+        const button3 = wrapper.findAll('button').find(n => n.text () === "3");
+        const button4 = wrapper.findAll('button').find(n => n.text() === "4");
+        const button5 = wrapper.findAll('button').find(n => n.text () === "5");
+        const button6 = wrapper.findAll('button').find(n => n.text() === "6");
+        const button7 = wrapper.findAll('button').find(n => n.text () === "7");
+        const button8 = wrapper.findAll('button').find(n => n.text() === "8");
+        const button9 = wrapper.findAll('button').find(n => n.text () === "9");
+        const button0 = wrapper.findAll('button').find(n => n.text() === "0");
         
 
-        await boton1.trigger('click');
-        await boton2.trigger('click');
-        await boton3.trigger('click');
-        await boton4.trigger('click');
-        await boton5.trigger('click');
-        await boton6.trigger('click');
-        await boton7.trigger('click');
-        await boton8.trigger('click');
-        await boton9.trigger('click');
-        await boton0.trigger('click');
-        await boton0.trigger('click');
+        await button1.trigger('click');
+        await button2.trigger('click');
+        await button3.trigger('click');
+        await button4.trigger('click');
+        await button5.trigger('click');
+        await button6.trigger('click');
+        await button7.trigger('click');
+        await button8.trigger('click');
+        await button9.trigger('click');
+        await button0.trigger('click');
+        await button0.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('1234567890')
     })
@@ -364,15 +364,15 @@ describe('CalculatorCard', () => {
     it('1, ÷, 3, =, 0,33333333 (8 decimales)', async () => {
         const wrapper = mount(CalculatorCard);
 
-        const boton1 = wrapper.findAll('button').find(n => n.text() === "1");
-        const botonDiv = wrapper.findAll('button').find(n => n.text() === "÷");
-        const boton3 = wrapper.findAll('button').find(n => n.text() === "3");
-        const botonEqual = wrapper.findAll('button').find(n => n.text() === "=");
+        const button1 = wrapper.findAll('button').find(n => n.text() === "1");
+        const buttonDivide = wrapper.findAll('button').find(n => n.text() === "÷");
+        const button3 = wrapper.findAll('button').find(n => n.text() === "3");
+        const buttonEquals = wrapper.findAll('button').find(n => n.text() === "=");
 
-        await boton1.trigger('click');
-        await botonDiv.trigger('click');
-        await boton3.trigger('click');
-        await botonEqual.trigger('click');
+        await button1.trigger('click');
+        await buttonDivide.trigger('click');
+        await button3.trigger('click');
+        await buttonEquals.trigger('click');
 
         expect(wrapper.find('.calc__display').text()).toBe('0,33333333');
     })
@@ -442,18 +442,18 @@ describe('CalculatorCard', () => {
     
     const wrapper = mount(CalculatorCard);
 
-        const boton2 = wrapper.findAll('button').find(n => n.text() === "2");
-        const botonDiv = wrapper.findAll('button').find(n => n.text() === "÷");
-        const botonPor = wrapper.findAll('button').find(n => n.text() === "x");
-        const botonEqual = wrapper.findAll('button').find(n => n.text() === "=");
+        const button2 = wrapper.findAll('button').find(n => n.text() === "2");
+        const buttonDivide = wrapper.findAll('button').find(n => n.text() === "÷");
+        const buttonMultiply = wrapper.findAll('button').find(n => n.text() === "x");
+        const buttonEquals = wrapper.findAll('button').find(n => n.text() === "=");
 
-        await boton2.trigger('click');
-        await botonDiv.trigger('click');
-        await boton2.trigger('click');
-        await botonEqual.trigger('click');
-        await botonPor.trigger('click');
-        await boton2.trigger('click');
-        await botonEqual.trigger('click');
+        await button2.trigger('click');
+        await buttonDivide.trigger('click');
+        await button2.trigger('click');
+        await buttonEquals.trigger('click');
+        await buttonMultiply.trigger('click');
+        await button2.trigger('click');
+        await buttonEquals.trigger('click');
         
         expect(wrapper.find('.calc__display').text()).toBe('2');
         })
