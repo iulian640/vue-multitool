@@ -181,3 +181,17 @@ button {
   font-size: 1.2rem;
   color: var(--color-text-muted);
 }
+
+.calc__memory {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+}
+
+.calc__memory button {
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  border-radius: var(--radius-btn);
+  padding: var(--space-2);
+}

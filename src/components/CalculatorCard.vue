@@ -1,6 +1,8 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from "vue";
+import { useMemoryStore } from "@/stores/memory.js";
 
+const memory = useMemoryStore();
 const display = ref("0");
 const previousValue = ref(null);
 const operator = ref(null);
@@ -10,6 +12,20 @@ const digits = ["7", "8", "9", "4", "5", "6", "1", "2", "3", "0"];
 const ops = ["+", "-", "x", "÷"];
 const decimal = ".";
 const displayText = computed(() => display.value.replace(".", ","));
+
+function pressMemoryAdd() {
+  if (hasError.value) return;
+  memory.save(display.value);
+}
+
+function pressMemoryRecall() {
+  if (hasError.value || memory.stored === null) return;
+  display.value = memory.stored;
+}
+
+function pressMemoryClear() {
+  memory.clear();
+}
 
 function pressDigit(digit) {
   if (hasError.value) return;
@@ -149,6 +165,11 @@ function pressEquals() {
       <button class="key--zero" @click="pressDigit('0')">0</button>
       <button @click="pressDecimal()">,</button>
       <button class="key--equals" @click="pressEquals()">=</button>
+    </div>
+    <div class="calc__memory">
+      <button @click="pressMemoryAdd()">M+</button>
+      <button @click="pressMemoryRecall()">MR</button>
+      <button @click="pressMemoryClear()">MC</button>
     </div>
   </section>
 </template>

@@ -1,8 +1,13 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { createWrapperError, mount } from '@vue/test-utils';
+import { createPinia, setActivePinia } from 'pinia';
 import CalculatorCard from '../CalculatorCard.vue';
 
 describe('CalculatorCard', () => {
+    beforeEach(() => {
+        setActivePinia(createPinia());
+    })
+
     it('Al montar el display muestra 0', () => {
         const wrapper = mount(CalculatorCard)
 
@@ -456,5 +461,39 @@ describe('CalculatorCard', () => {
         await buttonEquals.trigger('click');
         
         expect(wrapper.find('.calc__number').text()).toBe('2');
+        })
+
+    it('M+ guarda el número, CE lo borra y MR lo recupera', async () => {
+        const wrapper = mount(CalculatorCard);
+
+        const button5 = wrapper.findAll('button').find(n => n.text() === "5");
+        const buttonMemoryAdd = wrapper.findAll('button').find(n => n.text() === "M+");
+        const buttonCE = wrapper.findAll('button').find(n => n.text() === "CE");
+        const buttonMemoryRecall = wrapper.findAll('button').find(n => n.text() === "MR");
+
+        await button5.trigger('click');
+        await buttonMemoryAdd.trigger('click');
+        await buttonCE.trigger('click');
+        await buttonMemoryRecall.trigger('click');
+
+        expect(wrapper.find('.calc__number').text()).toBe('5');
+        })
+
+    it('MC borra la memoria y MR ya no recupera nada', async () => {
+        const wrapper = mount(CalculatorCard);
+
+        const button5 = wrapper.findAll('button').find(n => n.text() === "5");
+        const buttonMemoryAdd = wrapper.findAll('button').find(n => n.text() === "M+");
+        const buttonMemoryClear = wrapper.findAll('button').find(n => n.text() === "MC");
+        const buttonCE = wrapper.findAll('button').find(n => n.text() === "CE");
+        const buttonMemoryRecall = wrapper.findAll('button').find(n => n.text() === "MR");
+
+        await button5.trigger('click');
+        await buttonMemoryAdd.trigger('click');
+        await buttonMemoryClear.trigger('click');
+        await buttonCE.trigger('click');
+        await buttonMemoryRecall.trigger('click');
+
+        expect(wrapper.find('.calc__number').text()).toBe('0');
         })
 })
