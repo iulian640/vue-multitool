@@ -47,8 +47,8 @@ loadWeather();
       />
       <div>
         <p class="weather__temp">
-          {{ city.temperatures.max }}°<span class="weather__min">
-            / {{ city.temperatures.min }}°</span
+          {{ city.temperatures.max }}°<span class="weather__min"
+            >/ {{ city.temperatures.min }}°</span
           >
         </p>
         <p class="weather__desc">
