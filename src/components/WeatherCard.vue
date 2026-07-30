@@ -39,15 +39,22 @@ loadWeather();
 <template>
   <section class="card">
     <h2 class="card__title">El Tiempo</h2>
-    <div v-if="city">
-      <p>{{ city.name }}</p>
+    <div v-if="city" class="weather">
       <img
+        class="weather__icon"
         :src="skyIcon(city.stateSky.description)"
         alt="Estado del cielo"
-        width="80"
       />
-      <p>{{ city.temperatures.max }}°/ {{ city.temperatures.min }}°</p>
-      <p>{{ city.stateSky.description }}</p>
+      <div>
+        <p class="weather__temp">
+          {{ city.temperatures.max }}°<span class="weather__min">
+            / {{ city.temperatures.min }}°</span
+          >
+        </p>
+        <p class="weather__desc">
+          {{ city.stateSky.description }} · {{ city.name }}
+        </p>
+      </div>
     </div>
     <p v-if="error">{{ error }}</p>
   </section>

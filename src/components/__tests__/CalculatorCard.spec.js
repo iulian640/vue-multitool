@@ -6,7 +6,7 @@ describe('CalculatorCard', () => {
     it('Al montar el display muestra 0', () => {
         const wrapper = mount(CalculatorCard)
 
-        expect(wrapper.find('.calc__display').text()).toBe('0')
+        expect(wrapper.find('.calc__number').text()).toBe('0')
     })
 
     it('Pulsar 5 muestra 5', async () => {
@@ -16,7 +16,7 @@ describe('CalculatorCard', () => {
 
         await button5.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toBe('5');
+        expect(wrapper.find('.calc__number').text()).toBe('5');
     })
 
     it('Pulsar 1 y 2 deja 12', async () => {
@@ -28,7 +28,7 @@ describe('CalculatorCard', () => {
         await button1.trigger('click');
         await button2.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toBe('12');
+        expect(wrapper.find('.calc__number').text()).toBe('12');
     })
 
     it('5 + 3 dabe dar 8', async () => {
@@ -44,7 +44,7 @@ describe('CalculatorCard', () => {
         await button3.trigger('click');
         await buttonEquals.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toBe('8')
+        expect(wrapper.find('.calc__number').text()).toBe('8')
     })
 
     it('5 - 3 debe dar 2', async () => {
@@ -60,7 +60,7 @@ describe('CalculatorCard', () => {
         await button3.trigger('click');
         await buttonEquals.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toBe('2')
+        expect(wrapper.find('.calc__number').text()).toBe('2')
 
     })
 
@@ -77,7 +77,7 @@ describe('CalculatorCard', () => {
         await button3.trigger('click');
         await buttonEquals.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toBe('6');
+        expect(wrapper.find('.calc__number').text()).toBe('6');
     })
 
     it('6 ÷ 2 debe dar 3', async () => {
@@ -93,7 +93,7 @@ describe('CalculatorCard', () => {
         await button2.trigger('click');
         await buttonEquals.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toBe('3');
+        expect(wrapper.find('.calc__number').text()).toBe('3');
     })
 
     it('Si pulsas "6" "," y "2" debe dar 6,2', async () => {
@@ -107,7 +107,7 @@ describe('CalculatorCard', () => {
         await buttonComma.trigger('click');
         await button2.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toBe('6,2')
+        expect(wrapper.find('.calc__number').text()).toBe('6,2')
     })
 
     it('No permite poner mas de una coma en un numero', async () => {
@@ -122,7 +122,7 @@ describe('CalculatorCard', () => {
         await buttonComma.trigger('click');
         await button1.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toBe('6,1')
+        expect(wrapper.find('.calc__number').text()).toBe('6,1')
     })
 
     it('CE borra el numero actual', async () => {
@@ -134,7 +134,7 @@ describe('CalculatorCard', () => {
         await button6.trigger('click');
         await buttonCE.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toBe('0')
+        expect(wrapper.find('.calc__number').text()).toBe('0')
     })
 
     it('C borra toda la operación', async () => {
@@ -168,7 +168,7 @@ describe('CalculatorCard', () => {
         await button3.trigger('click')
         await buttonEquals.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toBe('11')
+        expect(wrapper.find('.calc__number').text()).toBe('11')
     })
 
     it('5, ÷, 0 da "Sin definir"', async () => {
@@ -184,7 +184,7 @@ describe('CalculatorCard', () => {
         await button0.trigger('click');
         await buttonEquals.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toBe('Sin definir')
+        expect(wrapper.find('.calc__number').text()).toBe('Sin definir')
 
     })
 
@@ -200,7 +200,7 @@ describe('CalculatorCard', () => {
         await button0.trigger('click');
         await buttonEquals.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toBe('Sin definir')
+        expect(wrapper.find('.calc__number').text()).toBe('Sin definir')
 
     })
 
@@ -217,7 +217,7 @@ describe('CalculatorCard', () => {
         await buttonEquals.trigger('click');
         await buttonEquals.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toBe('Sin definir')
+        expect(wrapper.find('.calc__number').text()).toBe('Sin definir')
 
     })
 
@@ -236,7 +236,7 @@ describe('CalculatorCard', () => {
         await buttonEquals.trigger('click');
         await button7.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toBe('Sin definir');
+        expect(wrapper.find('.calc__number').text()).toBe('Sin definir');
     })
 
     it('5, ÷, 0, =, C desbloquea la calculadora y 7 vuelve a escribir', async () => {
@@ -256,7 +256,7 @@ describe('CalculatorCard', () => {
         await buttonC.trigger('click');
         await button7.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toBe('7');
+        expect(wrapper.find('.calc__number').text()).toBe('7');
     })
 
     it('-, 5 hace que el valor sea -5(negativo)', async () =>
@@ -269,7 +269,7 @@ describe('CalculatorCard', () => {
         await buttonMinus.trigger('click');
         await button5.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toBe('-5')
+        expect(wrapper.find('.calc__number').text()).toBe('-5')
     })
 
     it('si pulsamos -, -, y = no da NaN', async () =>
@@ -283,7 +283,7 @@ describe('CalculatorCard', () => {
         await buttonMinus.trigger('click');
         await buttonEquals.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toBe('-')
+        expect(wrapper.find('.calc__number').text()).toBe('-')
     })
 
 
@@ -301,7 +301,7 @@ describe('CalculatorCard', () => {
         await button3.trigger('click');
         await buttonBackspace.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toBe('12')
+        expect(wrapper.find('.calc__number').text()).toBe('12')
     })
 
     it('1 y ⌫ nos deja en 0', async () =>
@@ -314,7 +314,7 @@ describe('CalculatorCard', () => {
         await button1.trigger('click');
         await buttonBackspace.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toBe('0')
+        expect(wrapper.find('.calc__number').text()).toBe('0')
     })
 
     it('- y ⌫ nos deja en 0', async () =>
@@ -327,7 +327,7 @@ describe('CalculatorCard', () => {
         await buttonMinus.trigger('click');
         await buttonBackspace.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toBe('0')
+        expect(wrapper.find('.calc__number').text()).toBe('0')
     })
 
     it('Muestra 10 dígitos como máximo', async () =>
@@ -358,7 +358,7 @@ describe('CalculatorCard', () => {
         await button0.trigger('click');
         await button0.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toBe('1234567890')
+        expect(wrapper.find('.calc__number').text()).toBe('1234567890')
     })
 
     it('1, ÷, 3, =, 0,33333333 (8 decimales)', async () => {
@@ -374,7 +374,7 @@ describe('CalculatorCard', () => {
         await button3.trigger('click');
         await buttonEquals.trigger('click');
 
-        expect(wrapper.find('.calc__display').text()).toBe('0,33333333');
+        expect(wrapper.find('.calc__number').text()).toBe('0,33333333');
     })
 
     it('pulsar la tecla física 5 y recibir 5', async () => {
@@ -383,7 +383,7 @@ describe('CalculatorCard', () => {
         window.dispatchEvent(new KeyboardEvent('keydown', { key: '5'}));
         await wrapper.vm.$nextTick();
         
-        expect(wrapper.find('.calc__display').text()).toBe('5');
+        expect(wrapper.find('.calc__number').text()).toBe('5');
     })
 
     it('teclas fisicas 2, *, 3 y enter dan 6', async () => {
@@ -395,7 +395,7 @@ describe('CalculatorCard', () => {
         window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter'}));
         await wrapper.vm.$nextTick();
 
-        expect(wrapper.find('.calc__display').text()).toBe('6');
+        expect(wrapper.find('.calc__number').text()).toBe('6');
     })
 
     it('"enter" y display sigue en 0', async () => {
@@ -404,7 +404,7 @@ describe('CalculatorCard', () => {
         window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter'}));
         await wrapper.vm.$nextTick();
 
-        expect(wrapper.find('.calc__display').text()).toBe('0');
+        expect(wrapper.find('.calc__number').text()).toBe('0');
     })
 
     it('teclas fisicas 1, 2 y Backspace dejan 1', async () => {
@@ -415,7 +415,7 @@ describe('CalculatorCard', () => {
         window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Backspace'}));
         await wrapper.vm.$nextTick();
 
-        expect(wrapper.find('.calc__display').text()).toBe('1');
+        expect(wrapper.find('.calc__number').text()).toBe('1');
     })
 
     it('teclas fisicas 1 y "," escriben 1,', async () => {
@@ -425,7 +425,7 @@ describe('CalculatorCard', () => {
         window.dispatchEvent(new KeyboardEvent('keydown', { key: ','}));
         await wrapper.vm.$nextTick();
 
-        expect(wrapper.find('.calc__display').text()).toBe('1,');
+        expect(wrapper.find('.calc__number').text()).toBe('1,');
     })
 
     it('teclas fisicas 1 y "." del numpad escriben 1,', async () => {
@@ -435,7 +435,7 @@ describe('CalculatorCard', () => {
         window.dispatchEvent(new KeyboardEvent('keydown', { key: '.'}));
         await wrapper.vm.$nextTick();
 
-        expect(wrapper.find('.calc__display').text()).toBe('1,');
+        expect(wrapper.find('.calc__number').text()).toBe('1,');
     })
 
     it('2, ÷, 2, =, x, 2, debe dar 2', async() =>{
@@ -455,6 +455,6 @@ describe('CalculatorCard', () => {
         await button2.trigger('click');
         await buttonEquals.trigger('click');
         
-        expect(wrapper.find('.calc__display').text()).toBe('2');
+        expect(wrapper.find('.calc__number').text()).toBe('2');
         })
 })

@@ -18,9 +18,22 @@
   --space-3: 1.5rem;
 
   /* Tipografía */
-  --font-main: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-main: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
+.calc__keys .key--op {
+  color: var(--color-accent);
+}
+.calc__keys .key--danger {
+  color: var(--color-danger);
+}
+.calc__keys .key--equals {
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+}
+.calc__keys .key--zero {
+  grid-column: span 2;
+}
 /* ===== Reset básico ===== */
 *,
 *::before,
@@ -79,4 +92,92 @@ button {
   #app > * {
     flex: 1;
   }
+}
+
+.calc__keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-1);
+}
+
+.calc__keys button {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  border-radius: var(--radius-btn);
+  padding: var(--space-2);
+  font-size: 1.1rem;
+}
+
+.calc__display {
+  background: var(--color-surface-2);
+  border-radius: var(--radius-btn);
+  padding: var(--space-2);
+  text-align: right;
+  margin-bottom: var(--space-2);
+}
+
+.calc__expression {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  min-height: 1rem;
+}
+
+.calc__number {
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+.card input,
+.card select {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  border: none;
+  border-radius: var(--radius-btn);
+  padding: var(--space-2);
+  font-family: inherit;
+  width: 100%;
+}
+
+.currency__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+}
+
+.currency__swap {
+  color: var(--color-accent);
+}
+
+.currency__result {
+  margin-top: var(--space-2);
+  color: var(--color-text-muted);
+}
+
+.currency__result strong {
+  color: var(--color-accent);
+  font-size: 1.2rem;
+}
+
+.weather {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.weather__icon {
+  width: 90px;
+}
+
+.weather__temp {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.weather__desc {
+  color: var(--color-text-muted);
+}
+
+.weather__min {
+  font-size: 1.2rem;
+  color: var(--color-text-muted);
 }

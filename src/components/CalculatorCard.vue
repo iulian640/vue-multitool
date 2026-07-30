@@ -22,6 +22,8 @@ function pressDigit(digit) {
 }
 
 function handleKeydown(event) {
+  if (event.target.tagName === "INPUT" || event.target.tagName === "SELECT")
+    return;
   if (digits.includes(event.key)) {
     pressDigit(event.key);
   } else if (event.key === "Enter") {
@@ -119,16 +121,34 @@ function pressEquals() {
 <template>
   <section class="card">
     <h2 class="card__title">Calculadora</h2>
-    <div class="calc__display">{{ displayText }}</div>
-    <p class="calc__expression">{{ previousValue }} {{ operator }}</p>
-    <button v-for="d in digits" :key="d" @click="pressDigit(d)">{{ d }}</button>
-    <button v-for="op in ops" :key="op" @click="pressOperator(op)">
-      {{ op }}
-    </button>
-    <button @click="pressEquals()">=</button>
-    <button @click="pressDecimal()">,</button>
-    <button @click="pressCE()">CE</button>
-    <button @click="pressC()">C</button>
-    <button @click="pressBackspace()">⌫</button>
+    <div class="calc__display">
+      <p class="calc__expression">{{ previousValue }} {{ operator }}</p>
+      <p class="calc__number">{{ displayText }}</p>
+    </div>
+    <div class="calc__keys">
+      <button class="key--danger" @click="pressCE()">CE</button>
+      <button class="key--danger" @click="pressC()">C</button>
+      <button @click="pressBackspace()">⌫</button>
+      <button class="key--op" @click="pressOperator('÷')">÷</button>
+
+      <button @click="pressDigit('7')">7</button>
+      <button @click="pressDigit('8')">8</button>
+      <button @click="pressDigit('9')">9</button>
+      <button class="key--op" @click="pressOperator('x')">x</button>
+
+      <button @click="pressDigit('4')">4</button>
+      <button @click="pressDigit('5')">5</button>
+      <button @click="pressDigit('6')">6</button>
+      <button class="key--op" @click="pressOperator('-')">-</button>
+
+      <button @click="pressDigit('1')">1</button>
+      <button @click="pressDigit('2')">2</button>
+      <button @click="pressDigit('3')">3</button>
+      <button class="key--op" @click="pressOperator('+')">+</button>
+
+      <button class="key--zero" @click="pressDigit('0')">0</button>
+      <button @click="pressDecimal()">,</button>
+      <button class="key--equals" @click="pressEquals()">=</button>
+    </div>
   </section>
 </template>
