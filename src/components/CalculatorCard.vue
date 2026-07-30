@@ -37,7 +37,7 @@ function handleKeydown(event) {
   } else if (event.key === "Backspace") {
     pressBackspace();
   } else if (event.key === "," || event.key === ".") {
-    pressComa();
+    pressDecimal();
   }
 }
 
@@ -57,7 +57,7 @@ function pressC() {
   hasError.value = false;
 }
 
-function pressComa() {
+function pressDecimal() {
   if (hasError.value) return;
   else if (!display.value.includes(decimal)) {
     display.value += decimal;
@@ -126,7 +126,7 @@ function pressEquals() {
       {{ op }}
     </button>
     <button @click="pressEquals()">=</button>
-    <button @click="pressComa()">,</button>
+    <button @click="pressDecimal()">,</button>
     <button @click="pressCE()">CE</button>
     <button @click="pressC()">C</button>
     <button @click="pressBackspace()">⌫</button>

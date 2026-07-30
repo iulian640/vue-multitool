@@ -1,53 +1,53 @@
 <script setup>
 import { getWeather } from "@/services/weather";
 import { ref } from "vue";
-import despejado from "@/assets/weather/clear-day.svg";
-import pocoNuboso from "@/assets/weather/partly-cloudy-day.svg";
-import nuboso from "@/assets/weather/cloudy.svg";
-import cubierto from "@/assets/weather/overcast.svg";
-import lluvia from "@/assets/weather/rain.svg";
-import tormenta from "@/assets/weather/thunderstorms.svg";
-import nieve from "@/assets/weather/snow.svg";
-import niebla from "@/assets/weather/fog.svg";
+import clearDay from "@/assets/weather/clear-day.svg";
+import partlyCloudy from "@/assets/weather/partly-cloudy-day.svg";
+import cloudy from "@/assets/weather/cloudy.svg";
+import overcast from "@/assets/weather/overcast.svg";
+import rain from "@/assets/weather/rain.svg";
+import thunderstorms from "@/assets/weather/thunderstorms.svg";
+import snow from "@/assets/weather/snow.svg";
+import fog from "@/assets/weather/fog.svg";
 
-const ciudad = ref(null);
+const city = ref(null);
 const error = ref("");
 
-function iconoCielo(descripcion) {
-  const d = descripcion.toLowerCase();
-  if (d.includes("tormenta")) return tormenta;
-  if (d.includes("lluvia") || d.includes("chubasco")) return lluvia;
-  if (d.includes("nieve")) return nieve;
-  if (d.includes("niebla") || d.includes("bruma")) return niebla;
-  if (d.includes("despejado")) return despejado;
-  if (d.includes("poco") || d.includes("intervalos")) return pocoNuboso;
-  if (d.includes("cubierto")) return cubierto;
-  return nuboso;
+function skyIcon(description) {
+  const d = description.toLowerCase();
+  if (d.includes("tormenta")) return thunderstorms;
+  if (d.includes("lluvia") || d.includes("chubasco")) return rain;
+  if (d.includes("nieve")) return snow;
+  if (d.includes("niebla") || d.includes("bruma")) return fog;
+  if (d.includes("despejado")) return clearDay;
+  if (d.includes("poco") || d.includes("intervalos")) return partlyCloudy;
+  if (d.includes("cubierto")) return overcast;
+  return cloudy;
 }
 
-async function cargarweather() {
+async function loadWeather() {
   try {
-    ciudad.value = await getWeather();
+    city.value = await getWeather();
   } catch {
     error.value = "No se pueden cargar los datos";
   }
 }
 
-cargarweather();
+loadWeather();
 </script>
 
 <template>
   <section class="card">
     <h2 class="card__title">El Tiempo</h2>
-    <div v-if="ciudad">
-      <p>{{ ciudad.name }}</p>
+    <div v-if="city">
+      <p>{{ city.name }}</p>
       <img
-        :src="iconoCielo(ciudad.stateSky.description)"
+        :src="skyIcon(city.stateSky.description)"
         alt="Estado del cielo"
         width="80"
       />
-      <p>{{ ciudad.temperatures.max }}°/ {{ ciudad.temperatures.min }}°</p>
-      <p>{{ ciudad.stateSky.description }}</p>
+      <p>{{ city.temperatures.max }}°/ {{ city.temperatures.min }}°</p>
+      <p>{{ city.stateSky.description }}</p>
     </div>
     <p v-if="error">{{ error }}</p>
   </section>
