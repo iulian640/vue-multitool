@@ -28,18 +28,23 @@ loadRates();
 <template>
   <section class="card">
     <h2 class="card__title">Divisas</h2>
-    <select v-model="from">
-      <option value="EUR">EUR</option>
-      <option value="USD">USD</option>
-      <option value="JPY">JPY</option>
-    </select>
     <input v-model="amount" type="number" placeholder="Cantidad" />
-    <select v-model="to">
-      <option value="EUR">EUR</option>
-      <option value="USD">USD</option>
-      <option value="JPY">JPY</option>
-    </select>
-    <p>{{ result }}</p>
-    <p>{{ apiError }}</p>
+    <div class="currency__row">
+      <select v-model="from">
+        <option value="EUR">EUR</option>
+        <option value="USD">USD</option>
+        <option value="JPY">JPY</option>
+      </select>
+      <span class="currency__swap">⇄</span>
+      <select v-model="to">
+        <option value="EUR">EUR</option>
+        <option value="USD">USD</option>
+        <option value="JPY">JPY</option>
+      </select>
+    </div>
+    <p v-if="result" class="currency__result">
+      {{ amount }} {{ from }} = <strong>{{ result }} {{ to }}</strong>
+    </p>
+    <p v-if="apiError">{{ apiError }}</p>
   </section>
 </template>

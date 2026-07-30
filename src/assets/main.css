@@ -126,3 +126,34 @@ button {
   font-size: 2.2rem;
   font-weight: 600;
 }
+.card input,
+.card select {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  border: none;
+  border-radius: var(--radius-btn);
+  padding: var(--space-2);
+  font-family: inherit;
+  width: 100%;
+}
+
+.currency__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+}
+
+.currency__swap {
+  color: var(--color-accent);
+}
+
+.currency__result {
+  margin-top: var(--space-2);
+  color: var(--color-text-muted);
+}
+
+.currency__result strong {
+  color: var(--color-accent);
+  font-size: 1.2rem;
+}
