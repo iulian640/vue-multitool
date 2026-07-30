@@ -157,3 +157,27 @@ button {
   color: var(--color-accent);
   font-size: 1.2rem;
 }
+
+.weather {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.weather__icon {
+  width: 90px;
+}
+
+.weather__temp {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.weather__desc {
+  color: var(--color-text-muted);
+}
+
+.weather__min {
+  font-size: 1.2rem;
+  color: var(--color-text-muted);
+}
