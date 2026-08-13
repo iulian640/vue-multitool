@@ -1,0 +1,40 @@
+default:
+  image: node:22
+
+stages:
+  - test
+  - deploy
+
+# Cache npm downloads across pipelines, keyed on the lockfile.
+cache:
+  key:
+    files:
+      - package-lock.json
+  paths:
+    - .npm/
+
+.node_setup: &node_setup
+  before_script:
+    - npm ci --cache .npm --prefer-offline
+
+unit-tests:
+  stage: test
+  <<: *node_setup
+  script:
+    - npm run test:unit -- --run
+
+# GitLab Pages publishes whatever lands in public/.
+# Vite already copies public/ into dist/, so swapping them after the
+# build is safe and keeps the repo's own public/ untouched.
+pages:
+  stage: deploy
+  <<: *node_setup
+  script:
+    - npm run build -- --base=./
+    - rm -rf public
+    - mv dist public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
