@@ -1,5 +1,7 @@
 # vue-multitool
 
+[![Deploy](https://github.com/iulian640/vue-multitool/actions/workflows/deploy.yml/badge.svg)](https://github.com/iulian640/vue-multitool/actions/workflows/deploy.yml)
+
 Calculadora, conversor de divisas y el tiempo de Oviedo en una sola vista. Ejercicio del bootcamp fullstack de Factoría F5, hecho con Vue 3 y diseño mobile first.
 
 **Demo:** https://iulian640.github.io/vue-multitool/
